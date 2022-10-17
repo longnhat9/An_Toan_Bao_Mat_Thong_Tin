@@ -1,5 +1,11 @@
 #Mã tuyến tính Affine Cipher
 
+def lower_to_upper(arr) :
+  for i in range(0, len(arr)) :
+    if arr[i].islower() == True:
+      arr[i] = arr[i].upper()
+  return arr
+
 str_ky_tu = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 def tao_arr_char(string_ky_tu) :
@@ -24,7 +30,7 @@ ban_ma = "HENTOITHUBAY"
 arr_x = []
 arr_y = []
 arr_ban_ma = tao_arr_char(ban_ma)
-
+arr_ban_ma = lower_to_upper(arr_ban_ma)
 for i in arr_ban_ma :
   for k in arr_character :
     if i == k :

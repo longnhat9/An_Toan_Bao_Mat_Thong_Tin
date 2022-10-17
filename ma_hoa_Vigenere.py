@@ -1,3 +1,5 @@
+#Mã hóa Vigenere
+
 def tao_arr_char(string_ky_tu) :
   arr_char = []
   length_str = len(string_ky_tu)
@@ -11,15 +13,21 @@ def arr_to_string(arr) :
     str = str + i
   return str
 
-mang_ky_tu = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-length_str = len(mang_ky_tu)
+def lower_to_upper(arr) :
+  for i in range(0, len(arr)) :
+    if arr[i].islower() == True:
+      arr[i] = arr[i].upper()
+  return arr
+
+str_ky_tu = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+length_str = len(str_ky_tu)
 arr_char = []
 arr_phu = []
 arr_chinh = []
 
-arr_char = tao_arr_char(mang_ky_tu)
+arr_char = tao_arr_char(str_ky_tu)
 arr_chinh.append(arr_char)
-arr_phu = tao_arr_char(mang_ky_tu)
+arr_phu = tao_arr_char(str_ky_tu)
 
 while True :
   arr_new = []
@@ -35,19 +43,28 @@ while True :
     break
 
 # Lặp khóa
-M = "ALLWORKANDNOPLAYMA"
-key = "WHENINRO"
-
+M = "ALLWORKANDNOPLAYmA"
+key = "WhENINRo"
 arr_m = tao_arr_char(M)
+arr_m = lower_to_upper(arr_m)
 arr_key_ban_dau = tao_arr_char(key)
+arr_key_ban_dau = lower_to_upper(arr_key_ban_dau)
+
+for i in range(0, len(arr_key_ban_dau)) :
+  if arr_key_ban_dau[i].islower() == True:
+    arr_key_ban_dau[i] = arr_key_ban_dau[i].upper()
 arr_key = tao_arr_char(key)
+arr_key = lower_to_upper(arr_key)
 arr_c = []
+
 if(len(key) < len(M)) :
   do_dai_con_thieu = len(M) - len(key)
   for i in range(0, do_dai_con_thieu) :
     for k in arr_key_ban_dau :
       if len(arr_key) < len(arr_m) :
         arr_key.append(k)
+      else :
+        break
 
 for i in range(0, len(arr_m)) :
   index_m = arr_chinh[0].index(arr_m[i])

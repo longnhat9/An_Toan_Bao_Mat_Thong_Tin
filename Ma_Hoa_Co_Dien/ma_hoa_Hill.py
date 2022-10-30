@@ -1,7 +1,5 @@
 #Mã hóa Hill
 
-import numpy as np
-
 str_ky_tu = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 ban_ro = "PAYMOREMONEY"
 ban_ro = ban_ro.upper()

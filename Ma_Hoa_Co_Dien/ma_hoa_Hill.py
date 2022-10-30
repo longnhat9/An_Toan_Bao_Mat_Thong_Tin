@@ -2,23 +2,43 @@
 
 import numpy as np
 
-dimension = 3
-key = np.matrix([[17, 17, 5], [21, 18, 21], [2, 2, 19]])
-
-ban_ro = 'PAYMOREMONEY'
 str_ky_tu = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+ban_ro = "PAYMOREMONEY"
+ban_ro = ban_ro.upper()
+key = [[17, 17, 5], [21, 18, 21], [2, 2, 19]]
+m = len(key)
 ban_ma = ""
 
-for index, i in enumerate(ban_ro):
-  values = []
-  if index % dimension == 0:
-    for j in range(0, dimension):
-      if(index + j < len(ban_ro)):
-        values.append([str_ky_tu.index(ban_ro[index + j])])
-    vector = np.matrix(values)
-    vector = key * vector
-    vector %= 26
-    for j in range(0, dimension):
-      ban_ma += str_ky_tu[vector.item(j)]
+size_c = int(len(ban_ro) / m)
+index_ban_ro = 0
+arr_p = []
+arr_ky_tu = []
+for i in str_ky_tu :
+  arr_ky_tu.append(i)
 
-print(ban_ma)
+for i in range(0, size_c) :
+  p = []
+  count = 0
+  while(count < 3) :
+    for index_str_ky_tu in range(0, len(str_ky_tu)) :
+      if ban_ro[index_ban_ro] == str_ky_tu[index_str_ky_tu] :
+        p.append(index_str_ky_tu)
+        break
+    count = count + 1
+    index_ban_ro = index_ban_ro + 1
+  arr_p.append(p)
+
+c = ""
+
+for index_p in range(0, len(arr_p)) :
+  for index_arr_k in range(0, m) :
+    sum = 0
+    for index_k_p in range(0, m) :
+      tich = key[index_arr_k][index_k_p] * arr_p[index_p][index_k_p]
+      sum = sum + tich
+    mod = sum % 26
+    for i in range(0, len(arr_ky_tu)) :
+      if mod == i :
+        c = c + arr_ky_tu[i]
+
+print(c)

@@ -16,7 +16,7 @@ def maj(x, y, z) :
     count = count + 1
   if z == 0 :
     count = count + 1
-  if count == 2 :
+  if count >= 2 :
     return 0
   else :
     return 1
@@ -98,16 +98,27 @@ if z[3] == m :
 
 s.append(phep_tinh_xor(arr_tinh_t))
 
-c_phu = []
+arr_c = []
 
 for i in range(0, len(arr_ban_ro)) :
   sum = s[i] + arr_ban_ro[i]
   if sum == 2 :
     sum = 0
-  c_phu.append(sum)
+  arr_c.append(sum)
 
-c = ""
-for i in c_phu :
-  c += str(i)
+sum = 0
+i = len(arr_c) - 1
+mu = 0
+while i >= 0 :
+  if arr_c[i] == 1:
+    sum = sum + 2 ** mu
+  i = i - 1
+  mu = mu + 1
 
-print(c)
+str_ky_tu = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+arr_ky_tu = []
+for i in range(0, len(str_ky_tu)) :
+  if i == sum :
+    print(str_ky_tu[i])
+    break

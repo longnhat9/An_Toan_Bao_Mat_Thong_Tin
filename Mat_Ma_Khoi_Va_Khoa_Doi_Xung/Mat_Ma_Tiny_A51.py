@@ -117,7 +117,6 @@ while i >= 0 :
 
 str_ky_tu = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-arr_ky_tu = []
 for i in range(0, len(str_ky_tu)) :
   if i == sum :
     print(str_ky_tu[i])
